@@ -8,3 +8,10 @@ export const OPERATION_KEYS = {
   EXP: "domainExperience",
   SKILLS: "desiredSkills",
 };
+
+export const INPUT_ACTION_TYPES = {
+  TEXTAREA: "description",
+  UPLOAD: "uploadedResume",
+  SELECT: "selectedAI",
+  CHECKBOX: "actions",
+};

@@ -4,6 +4,7 @@ const initialState = {
   description: "",
   file: null,
   selectedAI: "",
+  selectedActions: [],
 };
 
 export const dataSlice = createSlice({
@@ -18,6 +19,9 @@ export const dataSlice = createSlice({
     },
     updateSelectedAI(state, { payload }) {
       state.selectedAI = payload;
+    },
+    updateSelectedActions(state, { payload }) {
+      state.selectedActions = payload;
     },
   },
 });

@@ -1,23 +1,26 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { INPUT_ACTION_TYPES } from "../../../constants";
+import { dataActions } from "../../../store";
 import classes from "./index.module.scss";
 
-const Select = () => {
-  const [selectedOption, setSelectedOption] = useState("");
-  const [error, setError] = useState("");
+const Select = ({ error, setError }) => {
+  const dispatch = useDispatch();
+  const { selectedAI } = useSelector((state) => state.data);
+  const { SELECT } = INPUT_ACTION_TYPES;
 
   const handleSelectChange = (event) => {
     const value = event.target.value;
-    setSelectedOption(value);
+    dispatch(dataActions.updateSelectedAI(value));
     if (value) {
-      setError(""); // Clear error if an option is selected
+      setError({ type: SELECT, payload: "" }); // Clear error if an option is selected
     } else {
-      setError("Please select an AI.");
+      setError({ type: SELECT, payload: "Please select an AI." });
     }
   };
 
   const handleBlur = () => {
-    if (!selectedOption) {
-      setError("Please select an AI.");
+    if (!selectedAI) {
+      setError({ type: SELECT, payload: "Please select an AI." });
     }
   };
 
@@ -26,7 +29,7 @@ const Select = () => {
       <select
         className={`${classes.input} ${error ? classes.error : ""}`}
         id="ai"
-        value={selectedOption}
+        value={selectedAI}
         onChange={handleSelectChange}
         onBlur={handleBlur}
       >
