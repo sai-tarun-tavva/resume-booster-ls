@@ -1,13 +1,16 @@
+import { CONTENT } from "../../../constants";
 import classes from "./index.module.scss";
 
 const Upload = ({ file, setFile, error, setError }) => {
+  const { drag, browse, error: errorMessage } = CONTENT.sparkHub.upload;
+
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     if (selectedFile) {
       setFile(selectedFile);
       setError("");
     } else {
-      setError("Resume is required.");
+      setError(errorMessage);
     }
   };
 
@@ -39,9 +42,9 @@ const Upload = ({ file, setFile, error, setError }) => {
         />
         <i className={`bi bi-cloud-upload ${classes.icon}`}></i>
         <p className={classes.text}>
-          Drag & drop your resume here or{" "}
+          {drag}
           <label htmlFor="file-upload" className={classes.browse}>
-            browse
+            {browse}
           </label>
         </p>
       </div>

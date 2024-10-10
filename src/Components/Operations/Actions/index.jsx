@@ -1,22 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import Action from "../Action";
 import { dataActions } from "../../../store";
+import { CONTENT } from "../../../constants";
 import classes from "./index.module.scss";
-
-const actionItems = [
-  "Overall Assessment",
-  "About Resume",
-  "Percentage Match",
-  "Improve Resume",
-  "Missing Keywords",
-  "Interview Questions",
-  "Domain Experience",
-  "Desired Skills",
-];
 
 const Actions = ({ error, setError }) => {
   const dispatch = useDispatch();
   const { selectedActions } = useSelector((state) => state.data);
+  const {
+    error: errorMessage,
+    header,
+    items: actionItems,
+  } = CONTENT.sparkHub.actions;
 
   const handleCheckboxChange = (name) => {
     let updatedActions = [...selectedActions];
@@ -29,13 +24,13 @@ const Actions = ({ error, setError }) => {
     if (updatedActions.length > 0) {
       setError("");
     } else {
-      setError("Please select at least one action.");
+      setError(errorMessage);
     }
   };
 
   return (
     <div className={classes.actionsContainer}>
-      <h3 className={classes.title}>Select Actions</h3>
+      <h3 className={classes.title}>{header}</h3>
       <div className={classes.actions}>
         {actionItems.map((item, index) => (
           <Action key={index} name={item} onChange={handleCheckboxChange} />

@@ -6,7 +6,7 @@ import Upload from "./Upload";
 import Select from "./Select";
 import Actions from "./Actions";
 import Button from "./Button";
-import { INPUT_ACTION_TYPES } from "../../constants";
+import { CONTENT, INPUT_ACTION_TYPES } from "../../constants";
 import classes from "./index.module.scss";
 
 const { TEXTAREA, UPLOAD, SELECT, CHECKBOX } = INPUT_ACTION_TYPES;
@@ -24,6 +24,13 @@ const Operations = () => {
   );
   const [file, setFile] = useState(null);
   const [errors, setErrors] = useState(initialState);
+  const {
+    button,
+    textarea: { error: textareaError },
+    upload: { error: uploadError },
+    select: { error: selectError },
+    actions: { error: actionsError },
+  } = CONTENT.sparkHub;
 
   const setSingleError = (error, type) => {
     setErrors((prev) => ({ ...prev, [type]: error }));
@@ -31,13 +38,10 @@ const Operations = () => {
 
   const validateForm = () => {
     const validationErrors = {
-      [TEXTAREA]: !description ? "Job description is required." : "",
-      [UPLOAD]: !file ? "Resume is required." : "",
-      [SELECT]: !selectedAI ? "Please select an AI." : "",
-      [CHECKBOX]:
-        selectedActions.length === 0
-          ? "Please select at least one action."
-          : "",
+      [TEXTAREA]: !description ? textareaError : "",
+      [UPLOAD]: !file ? uploadError : "",
+      [SELECT]: !selectedAI ? selectError : "",
+      [CHECKBOX]: selectedActions.length === 0 ? actionsError : "",
     };
     return validationErrors;
   };
@@ -77,7 +81,7 @@ const Operations = () => {
           setError={(error) => setSingleError(error, CHECKBOX)}
         />
         <Button>
-          Ready to boost? <i className="bi bi-rocket-takeoff"></i>
+          {button.default} <i className="bi bi-rocket-takeoff"></i>
         </Button>
       </form>
     </div>

@@ -1,14 +1,16 @@
-import React from "react";
+import { CONTENT } from "../../constants";
 import classes from "./index.module.scss";
 
 const OverlayMessage = () => {
+  const { title1, title2, subtitle } = CONTENT.sparkHub.overlayMessage;
   return (
     <div className={classes.overlay}>
       <div className={classes.content}>
         <h1 className={classes.title}>
-          Elevate Your <span className={classes.highlight}>Career</span>
+          {title1}
+          <span className={classes.highlight}>{title2}</span>
         </h1>
-        <p className={classes.subtitle}>AI-powered resume analysis awaits</p>
+        <p className={classes.subtitle}>{subtitle}</p>
         <div className={classes.rocket}>
           <i className="bi bi-rocket-takeoff"></i>
         </div>

@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dataActions } from "../../../store";
+import { CONTENT } from "../../../constants";
 import classes from "./index.module.scss";
 
 const Textarea = ({ error, setError }) => {
   const dispatch = useDispatch();
   const { description } = useSelector((state) => state.data);
   const [isFocused, setIsFocused] = useState(false);
+  const { placeholder, error: errorMessage } = CONTENT.sparkHub.textarea;
 
   const handleChange = (e) => {
     dispatch(dataActions.updateDescription(e.target.value));
@@ -19,7 +21,7 @@ const Textarea = ({ error, setError }) => {
 
   const handleBlur = () => {
     setIsFocused(false);
-    if (!description) setError("Job description is required.");
+    if (!description) setError(errorMessage);
   };
 
   return (
@@ -30,7 +32,7 @@ const Textarea = ({ error, setError }) => {
           isFocused || description ? classes.active : ""
         } ${error ? classes.error : ""}`}
       >
-        Enter job description
+        {placeholder}
       </label>
       <textarea
         id="description"
