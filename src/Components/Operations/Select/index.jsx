@@ -10,34 +10,28 @@ const Select = ({ error, setError }) => {
     const value = event.target.value;
     dispatch(dataActions.updateSelectedAI(value));
     if (value) {
-      setError(""); // Clear error if an option is selected
+      setError("");
     } else {
-      setError("Please select an AI.");
-    }
-  };
-
-  const handleBlur = () => {
-    if (!selectedAI) {
       setError("Please select an AI.");
     }
   };
 
   return (
     <div className={classes.select}>
-      <select
-        className={`${classes.input} ${error ? classes.error : ""}`}
-        id="ai"
-        value={selectedAI}
-        onChange={handleSelectChange}
-        onBlur={handleBlur}
-      >
-        <option value="" disabled>
-          Select an AI
-        </option>
-        <option value="GeminiAI">GeminiAI</option>
-        <option value="OpenAI">OpenAI</option>
-      </select>
-      <small className={classes.errorText}>{error}</small>
+      <div className={classes.selectWrapper}>
+        <select
+          className={`${classes.input} ${error ? classes.error : ""}`}
+          value={selectedAI}
+          onChange={handleSelectChange}
+        >
+          <option value="" disabled>
+            Select an AI
+          </option>
+          <option value="GeminiAI">GeminiAI</option>
+          <option value="OpenAI">OpenAI</option>
+        </select>
+      </div>
+      <small className={classes.errorText}>{error || ""}</small>
     </div>
   );
 };

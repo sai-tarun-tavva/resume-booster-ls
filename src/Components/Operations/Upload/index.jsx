@@ -5,35 +5,57 @@ const Upload = ({ file, setFile, error, setError }) => {
     const selectedFile = event.target.files[0];
     if (selectedFile) {
       setFile(selectedFile);
-      setError(""); // Clear error if file is selected
+      setError("");
     } else {
       setError("Resume is required.");
     }
   };
 
-  const handleBlur = () => {
-    if (!file) {
-      setError("Resume is required.");
+  const handleDrop = (event) => {
+    event.preventDefault();
+    const droppedFile = event.dataTransfer.files[0];
+    if (droppedFile) {
+      setFile(droppedFile);
+      setError("");
     }
+  };
+
+  const handleDragOver = (event) => {
+    event.preventDefault();
   };
 
   return (
     <div className={classes.upload}>
-      <div>
+      <div
+        className={`${classes.dropzone} ${file ? classes.active : ""}`}
+        onDrop={handleDrop}
+        onDragOver={handleDragOver}
+      >
         <input
           type="file"
           id="file-upload"
           onChange={handleFileChange}
-          onBlur={handleBlur}
-          className={classes.input}
+          style={{ display: "none" }}
         />
-        <label htmlFor="file-upload" className={classes.label}>
-          <i className="bi bi-file-earmark"></i>
-          Choose a resume
-        </label>
-        <span className={classes.name}>{file?.name || "No resume chosen"}</span>
+        <i className={`bi bi-cloud-upload ${classes.icon}`}></i>
+        <p className={classes.text}>
+          Drag & drop your resume here or{" "}
+          <label htmlFor="file-upload" className={classes.browse}>
+            browse
+          </label>
+        </p>
       </div>
-      <small className={classes.errorText}>{error}</small>
+      {file && (
+        <div className={classes.file}>
+          <i className={`bi bi-file-earmark-text ${classes.fileIcon}`}></i>
+          <span className={classes.fileName}>{file.name}</span>
+          <i
+            className={`bi bi-x ${classes.removeIcon}`}
+            onClick={() => setFile(null)}
+          ></i>
+        </div>
+      )}
+      <small className={classes.errorText}>{error || ""}</small>
     </div>
   );
 };

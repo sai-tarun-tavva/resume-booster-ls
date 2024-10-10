@@ -13,5 +13,4 @@ const SparkHub = () => {
   );
 };
 
-SparkHub.displayName = "SparkHub";
 export default SparkHub;

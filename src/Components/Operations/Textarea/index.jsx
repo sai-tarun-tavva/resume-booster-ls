@@ -1,13 +1,16 @@
-import React, { useRef, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dataActions } from "../../../store";
 import classes from "./index.module.scss";
 
 const Textarea = ({ error, setError }) => {
   const dispatch = useDispatch();
-  const { description: value } = useSelector((state) => state.data);
-  const descriptionRef = useRef("");
+  const { description } = useSelector((state) => state.data);
   const [isFocused, setIsFocused] = useState(false);
+
+  const handleChange = (e) => {
+    dispatch(dataActions.updateDescription(e.target.value));
+  };
 
   const handleFocus = () => {
     setIsFocused(true);
@@ -15,10 +18,8 @@ const Textarea = ({ error, setError }) => {
   };
 
   const handleBlur = () => {
-    const desc = descriptionRef.current.value;
     setIsFocused(false);
-    dispatch(dataActions.updateDescription(desc));
-    if (desc === "") setError("Job description is required.");
+    if (!description) setError("Job description is required.");
   };
 
   return (
@@ -26,7 +27,7 @@ const Textarea = ({ error, setError }) => {
       <label
         htmlFor="description"
         className={`${classes.label} ${
-          isFocused || value ? classes.active : ""
+          isFocused || description ? classes.active : ""
         } ${error ? classes.error : ""}`}
       >
         Enter job description
@@ -36,7 +37,8 @@ const Textarea = ({ error, setError }) => {
         className={`${classes.input} ${isFocused ? classes.focused : ""} ${
           error ? classes.error : ""
         }`}
-        ref={descriptionRef}
+        value={description}
+        onChange={handleChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
       />

@@ -39,27 +39,24 @@ const Operations = () => {
           ? "Please select at least one action."
           : "",
     };
-
     return validationErrors;
   };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-
     const validationErrors = validateForm();
-
     if (Object.values(validationErrors).some((error) => error)) {
       setErrors(validationErrors);
     } else {
       setErrors(initialState);
       console.log(description, file, selectedAI, selectedActions);
+      // Dispatch action or call API here
     }
   };
 
   return (
     <div className={classes.operations}>
       <Header />
-
       <form onSubmit={handleFormSubmit}>
         <Textarea
           error={errors[TEXTAREA]}
@@ -79,7 +76,6 @@ const Operations = () => {
           error={errors[CHECKBOX]}
           setError={(error) => setSingleError(error, CHECKBOX)}
         />
-
         <Button>
           Ready to boost? <i className="bi bi-rocket-takeoff"></i>
         </Button>

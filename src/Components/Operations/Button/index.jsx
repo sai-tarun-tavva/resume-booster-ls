@@ -1,9 +1,8 @@
-import React from "react";
 import classes from "./index.module.scss";
 
-const Button = ({ clickHandler, children, className = "" }) => {
+const Button = ({ children, onClick, className = "" }) => {
   return (
-    <button className={`${classes.button} ${className}`} onClick={clickHandler}>
+    <button className={`${classes.button} ${className}`} onClick={onClick}>
       {children}
     </button>
   );

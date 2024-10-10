@@ -17,5 +17,4 @@ const OverlayMessage = () => {
   );
 };
 
-OverlayMessage.displayName = "OverlayMessage";
 export default OverlayMessage;
