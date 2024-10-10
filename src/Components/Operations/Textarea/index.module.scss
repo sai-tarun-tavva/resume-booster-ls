@@ -36,6 +36,8 @@
     transition: var(--transition);
     font-size: 0.875rem;
     resize: vertical;
+    color: var(--text-light);
+    font-family: inherit;
 
     &:hover:not(:focus) {
       border-color: var(--text-light);
