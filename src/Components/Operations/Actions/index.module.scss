@@ -1,6 +1,17 @@
-.actions {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
-  gap: 1rem;
+.actionsContainer {
   margin: auto 0 3rem;
+
+  .actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+    gap: 1rem;
+  }
+  .errorText {
+    color: var(--error-color);
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    display: block;
+    height: 1rem;
+    grid-column: span 2;
+  }
 }

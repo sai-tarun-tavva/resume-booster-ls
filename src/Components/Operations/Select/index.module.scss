@@ -5,7 +5,7 @@
   &::after {
     content: "▼";
     font-size: 1rem;
-    top: 50%;
+    top: 35%;
     right: 1rem;
     position: absolute;
     transform: translateY(-50%);
@@ -34,8 +34,21 @@
       box-shadow: 0 0 0 0.2rem var(--primary-shadow);
     }
 
+    &.error {
+      border-color: var(--error-color);
+      box-shadow: 0 0 0 0.2rem var(--error-shadow);
+    }
+
     option {
       padding: 0.75rem;
     }
+  }
+
+  .errorText {
+    color: var(--error-color);
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    height: 1rem;
+    display: block;
   }
 }

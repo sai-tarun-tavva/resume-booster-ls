@@ -19,7 +19,7 @@ const Textarea = ({ label }) => {
     const desc = descriptionRef.current.value;
     setIsFocused(false);
     dispatch(dataActions.updateDescription(desc));
-    if (desc === "") setError("Job description is required");
+    if (desc === "") setError("Job description is required.");
   };
 
   return (
