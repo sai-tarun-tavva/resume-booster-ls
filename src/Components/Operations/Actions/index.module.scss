@@ -1,0 +1,6 @@
+.actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+  gap: 1rem;
+  margin: auto 0 3rem;
+}

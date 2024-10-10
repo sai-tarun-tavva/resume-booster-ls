@@ -1,0 +1,59 @@
+.textarea {
+  position: relative;
+  margin: 1.5rem 0;
+
+  .label {
+    position: absolute;
+    left: 0.75rem;
+    top: 0.75rem;
+    transition: all 0.2s ease-out;
+    background-color: #ffffff;
+    padding: 0 0.25rem;
+    color: #6b7280;
+    font-size: 0.9rem;
+
+    &.active {
+      top: -0.5rem;
+      font-size: 0.75rem;
+      color: var(--primary-color);
+    }
+
+    &.error {
+      color: var(--error-color);
+    }
+  }
+
+  .input {
+    width: 100%;
+    height: 10rem;
+    padding: 0.75rem;
+    border: 0.1rem solid #d1d5db;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: all 0.2s ease-out;
+    font-size: 0.9rem;
+    resize: vertical;
+
+    &:hover:not(:focus) {
+      border-color: #9ca3af;
+    }
+
+    &.focused {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px var(--primary-shadow);
+    }
+
+    &.error {
+      border-color: var(--error-color);
+      box-shadow: 0 0 0 0.2rem var(--error-shadow);
+    }
+  }
+
+  .errorText {
+    color: var(--error-color);
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    height: 1rem;
+    display: block;
+  }
+}

@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+/* Base Styles */
+html {
+  font-size: 8px; // Default for small screens (less than 640px)
+
+  @media (min-width: 640px) {
+    font-size: 10px; // For screens 640px and up
+  }
+
+  @media (min-width: 768px) {
+    font-size: 12px; // For screens 768px and up (tablets)
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 14px; // For screens 1024px and up (small laptops)
+  }
+
+  @media (min-width: 1366px) {
+    font-size: 16px; // For screens 1366px and up (large laptops)
+  }
+
+  @media (min-width: 1920px) {
+    font-size: 20px; // For screens 1920px and up (full HD TVs)
+  }
+
+  @media (min-width: 2560px) {
+    font-size: 24px; // For screens 2560px and up (2K displays)
+  }
+
+  @media (min-width: 3840px) {
+    font-size: 45px; // For screens 3840px and up (4K displays)
+  }
+}
+
+:root {
+  --primary-color: rgb(24, 94, 170);
+  --primary-shadow: rgba(24, 94, 170, 0.3);
+  --primary-hover: rgb(0, 74, 132);
+  --error-color: rgb(220, 40, 40);
+  --error-shadow: rgba(220, 38, 38, 0.1);
+}
+
+body {
+  margin: 0;
+  font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(250, 250, 250);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+}
+
+.loading {
+  text-shadow: 0 0 0.3rem rgba(255, 255, 255, 0.8);
+  animation: glowing 0.2s infinite alternate;
+}
+
+@keyframes glowing {
+  0% {
+    text-shadow: 0 0 0.3rem rgba(255, 255, 255, 0.8),
+      0 0 0.6rem rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 0.5rem rgba(255, 255, 255, 1),
+      0 0 1rem rgba(255, 255, 255, 0.8);
+  }
+}
