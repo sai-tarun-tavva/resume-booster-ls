@@ -1,22 +1,19 @@
-import { INPUT_ACTION_TYPES } from "../../../constants";
 import classes from "./index.module.scss";
 
 const Upload = ({ file, setFile, error, setError }) => {
-  const { UPLOAD } = INPUT_ACTION_TYPES;
-
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     if (selectedFile) {
       setFile(selectedFile);
-      setError({ type: UPLOAD, payload: "" }); // Clear error if file is selected
+      setError(""); // Clear error if file is selected
     } else {
-      setError({ type: UPLOAD, payload: "Resume is required." });
+      setError("Resume is required.");
     }
   };
 
   const handleBlur = () => {
     if (!file) {
-      setError({ type: UPLOAD, payload: "Resume is required." });
+      setError("Resume is required.");
     }
   };
 

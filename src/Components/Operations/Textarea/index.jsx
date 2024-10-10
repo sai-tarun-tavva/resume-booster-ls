@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dataActions } from "../../../store";
-import { INPUT_ACTION_TYPES } from "../../../constants";
 import classes from "./index.module.scss";
 
 const Textarea = ({ error, setError }) => {
@@ -9,19 +8,17 @@ const Textarea = ({ error, setError }) => {
   const { description: value } = useSelector((state) => state.data);
   const descriptionRef = useRef("");
   const [isFocused, setIsFocused] = useState(false);
-  const { TEXTAREA } = INPUT_ACTION_TYPES;
 
   const handleFocus = () => {
     setIsFocused(true);
-    setError({ type: TEXTAREA, payload: "" });
+    setError("");
   };
 
   const handleBlur = () => {
     const desc = descriptionRef.current.value;
     setIsFocused(false);
     dispatch(dataActions.updateDescription(desc));
-    if (desc === "")
-      setError({ type: TEXTAREA, payload: "Job description is required." });
+    if (desc === "") setError("Job description is required.");
   };
 
   return (

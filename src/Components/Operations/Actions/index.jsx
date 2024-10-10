@@ -2,7 +2,6 @@ import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Action from "../Action";
 import { dataActions } from "../../../store";
-import { INPUT_ACTION_TYPES } from "../../../constants";
 import classes from "./index.module.scss";
 
 const Actions = ({ error, setError }) => {
@@ -19,7 +18,6 @@ const Actions = ({ error, setError }) => {
 
   const dispatch = useDispatch();
   const { selectedActions } = useSelector((state) => state.data);
-  const { CHECKBOX } = INPUT_ACTION_TYPES;
 
   const handleCheckboxChange = (name, checked) => {
     let updatedActions = [];
@@ -30,12 +28,9 @@ const Actions = ({ error, setError }) => {
     }
     dispatch(dataActions.updateSelectedActions(updatedActions));
     if (updatedActions.length > 0) {
-      setError({ type: CHECKBOX, payload: "" }); // Clear error when at least one checkbox is checked
+      setError(""); // Clear error when at least one checkbox is checked
     } else {
-      setError({
-        type: CHECKBOX,
-        payload: "Please select at least one action.",
-      });
+      setError("Please select at least one action.");
     }
   };
 

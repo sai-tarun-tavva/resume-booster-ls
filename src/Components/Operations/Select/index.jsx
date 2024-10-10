@@ -1,26 +1,24 @@
 import { useDispatch, useSelector } from "react-redux";
-import { INPUT_ACTION_TYPES } from "../../../constants";
 import { dataActions } from "../../../store";
 import classes from "./index.module.scss";
 
 const Select = ({ error, setError }) => {
   const dispatch = useDispatch();
   const { selectedAI } = useSelector((state) => state.data);
-  const { SELECT } = INPUT_ACTION_TYPES;
 
   const handleSelectChange = (event) => {
     const value = event.target.value;
     dispatch(dataActions.updateSelectedAI(value));
     if (value) {
-      setError({ type: SELECT, payload: "" }); // Clear error if an option is selected
+      setError(""); // Clear error if an option is selected
     } else {
-      setError({ type: SELECT, payload: "Please select an AI." });
+      setError("Please select an AI.");
     }
   };
 
   const handleBlur = () => {
     if (!selectedAI) {
-      setError({ type: SELECT, payload: "Please select an AI." });
+      setError("Please select an AI.");
     }
   };
 

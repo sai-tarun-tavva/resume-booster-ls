@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import Header from "./Header";
 import Textarea from "./Textarea";
@@ -18,50 +18,40 @@ const initialState = {
   [CHECKBOX]: "",
 };
 
-const reducer = (state, action) => {
-  const { type, payload } = action;
-
-  return {
-    ...state,
-    [type]: payload,
-  };
-};
-
 const Operations = () => {
   const { description, selectedAI, selectedActions } = useSelector(
     (state) => state.data
   );
   const [file, setFile] = useState(null);
-  const [errors, dispatch] = useReducer(reducer, initialState);
+  const [errors, setErrors] = useState(initialState);
 
-  const setError = (action) => {
-    dispatch(action);
+  const setSingleError = (error, type) => {
+    setErrors((prev) => ({ ...prev, [type]: error }));
+  };
+
+  const validateForm = () => {
+    const validationErrors = {
+      [TEXTAREA]: !description ? "Job description is required." : "",
+      [UPLOAD]: !file ? "Resume is required." : "",
+      [SELECT]: !selectedAI ? "Please select an AI." : "",
+      [CHECKBOX]:
+        selectedActions.length === 0
+          ? "Please select at least one action."
+          : "",
+    };
+
+    return validationErrors;
   };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    if (!description || !file || !selectedAI || selectedActions.length === 0) {
-      setError({
-        type: TEXTAREA,
-        payload: !description ? "Job description is required." : "",
-      });
-      setError({
-        type: UPLOAD,
-        payload: !file ? "Resume is required." : "",
-      });
-      setError({
-        type: SELECT,
-        payload: !selectedAI ? "Please select an AI." : "",
-      });
-      setError({
-        type: CHECKBOX,
-        payload:
-          selectedActions.length === 0
-            ? "Please select at least one action."
-            : "",
-      });
+    const validationErrors = validateForm();
+
+    if (Object.values(validationErrors).some((error) => error)) {
+      setErrors(validationErrors);
     } else {
+      setErrors(initialState);
       console.log(description, file, selectedAI, selectedActions);
     }
   };
@@ -71,15 +61,24 @@ const Operations = () => {
       <Header />
 
       <form onSubmit={handleFormSubmit}>
-        <Textarea error={errors[TEXTAREA]} setError={setError} />
+        <Textarea
+          error={errors[TEXTAREA]}
+          setError={(error) => setSingleError(error, TEXTAREA)}
+        />
         <Upload
           file={file}
           setFile={setFile}
           error={errors[UPLOAD]}
-          setError={setError}
+          setError={(error) => setSingleError(error, UPLOAD)}
         />
-        <Select error={errors[SELECT]} setError={setError} />
-        <Actions error={errors[CHECKBOX]} setError={setError} />
+        <Select
+          error={errors[SELECT]}
+          setError={(error) => setSingleError(error, SELECT)}
+        />
+        <Actions
+          error={errors[CHECKBOX]}
+          setError={(error) => setSingleError(error, CHECKBOX)}
+        />
 
         <Button>
           Ready to boost? <i className="bi bi-rocket-takeoff"></i>
