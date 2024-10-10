@@ -1,17 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
-import { dataActions } from "../../../store";
 import { INPUT_ACTION_TYPES } from "../../../constants";
 import classes from "./index.module.scss";
 
-const Upload = ({ error, setError }) => {
-  const dispatch = useDispatch();
-  const { file } = useSelector((state) => state.data);
+const Upload = ({ file, setFile, error, setError }) => {
   const { UPLOAD } = INPUT_ACTION_TYPES;
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     if (selectedFile) {
-      dispatch(dataActions.updateFile(selectedFile));
+      setFile(selectedFile);
       setError({ type: UPLOAD, payload: "" }); // Clear error if file is selected
     } else {
       setError({ type: UPLOAD, payload: "Resume is required." });

@@ -1,7 +1,4 @@
 .operations {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
   flex: 0 0 30%;
   padding: 1.5rem;
   background-color: #ffffff;
@@ -30,10 +27,12 @@
     }
   }
 
-  // button {
-  //   margin-top: 1.5rem;
-  //   width: 100%;
-  // }
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    height: 88vh;
+  }
 
   @media (max-width: 768px) {
     flex: none;

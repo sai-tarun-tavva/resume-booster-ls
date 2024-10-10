@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   description: "",
-  file: null,
   selectedAI: "",
   selectedActions: [],
 };
@@ -13,9 +12,6 @@ export const dataSlice = createSlice({
   reducers: {
     updateDescription(state, { payload }) {
       state.description = payload;
-    },
-    updateFile(state, { payload }) {
-      state.file = payload;
     },
     updateSelectedAI(state, { payload }) {
       state.selectedAI = payload;

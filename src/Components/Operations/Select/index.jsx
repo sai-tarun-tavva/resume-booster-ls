@@ -36,8 +36,8 @@ const Select = ({ error, setError }) => {
         <option value="" disabled>
           Select an AI
         </option>
-        <option value="1">GeminiAI</option>
-        <option value="2">OpenAI</option>
+        <option value="GeminiAI">GeminiAI</option>
+        <option value="OpenAI">OpenAI</option>
       </select>
       <small className={classes.errorText}>{error}</small>
     </div>

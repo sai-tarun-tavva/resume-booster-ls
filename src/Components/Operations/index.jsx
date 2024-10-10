@@ -1,4 +1,5 @@
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
+import { useSelector } from "react-redux";
 import Textarea from "./Textarea";
 import Upload from "./Upload";
 import Select from "./Select";
@@ -26,10 +27,42 @@ const reducer = (state, action) => {
 };
 
 const Operations = () => {
+  const { description, selectedAI, selectedActions } = useSelector(
+    (state) => state.data
+  );
+  const [file, setFile] = useState(null);
   const [errors, dispatch] = useReducer(reducer, initialState);
 
   const setError = (action) => {
     dispatch(action);
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+
+    if (!description || !file || !selectedAI || selectedActions.length === 0) {
+      setError({
+        type: TEXTAREA,
+        payload: !description ? "Job description is required." : "",
+      });
+      setError({
+        type: UPLOAD,
+        payload: !file ? "Resume is required." : "",
+      });
+      setError({
+        type: SELECT,
+        payload: !selectedAI ? "Please select an AI." : "",
+      });
+      setError({
+        type: CHECKBOX,
+        payload:
+          selectedActions.length === 0
+            ? "Please select at least one action."
+            : "",
+      });
+    } else {
+      console.log(description, file, selectedAI, selectedActions);
+    }
   };
 
   return (
@@ -39,12 +72,19 @@ const Operations = () => {
         <p>Spark</p>
       </span>
 
-      <Textarea error={errors[TEXTAREA]} setError={setError} />
-      <Upload error={errors[UPLOAD]} setError={setError} />
-      <Select error={errors[SELECT]} setError={setError} />
-      <Actions error={errors[CHECKBOX]} setError={setError} />
+      <form onSubmit={handleFormSubmit}>
+        <Textarea error={errors[TEXTAREA]} setError={setError} />
+        <Upload
+          file={file}
+          setFile={setFile}
+          error={errors[UPLOAD]}
+          setError={setError}
+        />
+        <Select error={errors[SELECT]} setError={setError} />
+        <Actions error={errors[CHECKBOX]} setError={setError} />
 
-      <Button>Ready to boost?</Button>
+        <Button>Ready to boost?</Button>
+      </form>
     </div>
   );
 };
