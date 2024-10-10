@@ -31,7 +31,8 @@ const Upload = ({ file, setFile, error, setError }) => {
           className={classes.input}
         />
         <label htmlFor="file-upload" className={classes.label}>
-          Choose your resume
+          <i className="bi bi-file-earmark"></i>
+          Choose a resume
         </label>
         <span className={classes.name}>{file?.name || "No resume chosen"}</span>
       </div>

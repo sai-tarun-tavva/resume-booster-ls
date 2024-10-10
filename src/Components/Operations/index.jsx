@@ -1,5 +1,6 @@
 import { useReducer, useState } from "react";
 import { useSelector } from "react-redux";
+import Header from "./Header";
 import Textarea from "./Textarea";
 import Upload from "./Upload";
 import Select from "./Select";
@@ -67,10 +68,7 @@ const Operations = () => {
 
   return (
     <div className={classes.operations}>
-      <span>
-        <p>R</p>
-        <p>Spark</p>
-      </span>
+      <Header />
 
       <form onSubmit={handleFormSubmit}>
         <Textarea error={errors[TEXTAREA]} setError={setError} />
@@ -83,7 +81,9 @@ const Operations = () => {
         <Select error={errors[SELECT]} setError={setError} />
         <Actions error={errors[CHECKBOX]} setError={setError} />
 
-        <Button>Ready to boost?</Button>
+        <Button>
+          Ready to boost? <i className="bi bi-rocket-takeoff"></i>
+        </Button>
       </form>
     </div>
   );
