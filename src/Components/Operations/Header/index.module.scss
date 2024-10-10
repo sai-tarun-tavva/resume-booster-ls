@@ -1,34 +1,39 @@
 .header {
   display: flex;
   align-items: center;
+  margin-bottom: 2rem;
 
   span {
     p {
       display: inline;
-      color: #07a2d2;
+      color: var(--primary-color);
       font-size: 2.5rem;
       cursor: default;
       font-family: "Poppins", sans-serif;
-      font-weight: 600;
-      letter-spacing: 0.05rem;
+      font-weight: 700;
+      letter-spacing: -0.05em;
       text-transform: capitalize;
-      text-shadow: 0.06rem 0.06rem 0.1rem rgba(0, 0, 0, 0.1);
     }
 
     p:first-child {
-      display: inline;
-      color: #1860ab;
+      color: var(--text-color);
       &::before {
         content: "•";
-        font-size: 2rem;
+        font-size: 3rem;
         margin-right: 0.3rem;
+        color: var(--primary-color);
       }
     }
   }
 
   i {
     margin-left: auto;
-    color: var(--primary-color);
-    font-size: 2rem;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    transition: var(--transition);
+
+    &:hover {
+      color: var(--primary-color);
+    }
   }
 }

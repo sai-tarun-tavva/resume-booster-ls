@@ -9,23 +9,23 @@
 
   .slider {
     position: relative;
-    width: 2.25rem;
+    width: 2.5rem;
     height: 1.25rem;
-    background-color: #ccc;
+    background-color: var(--border-color);
     border-radius: 1.25rem;
-    transition: 0.4s;
-    margin-right: 0.5rem;
+    transition: var(--transition);
+    margin-right: 0.75rem;
 
     &:before {
       position: absolute;
       content: "";
       height: 1rem;
       width: 1rem;
-      left: 0.1rem;
-      bottom: 0.1rem;
-      background-color: white;
+      left: 0.125rem;
+      bottom: 0.125rem;
+      background-color: var(--card-bg);
       border-radius: 50%;
-      transition: 0.4s;
+      transition: var(--transition);
     }
   }
 
@@ -34,11 +34,16 @@
   }
 
   .input:checked + .slider:before {
-    transform: translateX(1rem);
+    transform: translateX(1.25rem);
   }
 
   .name {
-    font-size: 0.9rem;
-    color: #4b5563;
+    font-size: 0.875rem;
+    color: var(--text-color);
+    transition: var(--transition);
+  }
+
+  &:hover .name {
+    color: var(--primary-color);
   }
 }

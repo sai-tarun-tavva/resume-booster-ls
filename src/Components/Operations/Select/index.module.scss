@@ -4,13 +4,13 @@
 
   &::after {
     content: "▼";
-    font-size: 1rem;
-    top: 35%;
+    font-size: 0.875rem;
+    top: 30%;
     right: 1rem;
     position: absolute;
-    transform: translateY(-50%);
+    transform: translateY(-30%);
     pointer-events: none;
-    color: #6b7280;
+    color: var(--text-light);
   }
 
   .input {
@@ -18,15 +18,15 @@
     width: 100%;
     font-size: 0.875rem;
     padding: 0.75rem 1rem;
-    background-color: #ffffff;
-    border: 1px solid #d1d5db;
+    background-color: var(--card-bg);
+    border: 0.06rem solid var(--border-color);
     border-radius: 0.5rem;
     cursor: pointer;
     outline: none;
-    transition: all 0.3s ease;
+    transition: var(--transition);
 
     &:hover {
-      border-color: #9ca3af;
+      border-color: var(--text-light);
     }
 
     &:focus {

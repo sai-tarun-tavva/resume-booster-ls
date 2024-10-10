@@ -4,13 +4,13 @@
   font-size: 1rem;
   font-weight: 600;
   text-align: center;
-  color: #ffffff;
+  color: var(--card-bg);
   background-color: var(--primary-color);
   border: none;
   border-radius: 0.5rem;
   margin-bottom: 1.5rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.1s ease;
+  transition: var(--transition);
 
   i {
     margin-left: 0.5rem;
@@ -18,10 +18,13 @@
 
   &:hover {
     background-color: var(--primary-hover);
+    transform: translateY(-0.13rem);
+    box-shadow: 0 0.25rem 0.4rem -0.06rem rgba(0, 0, 0, 0.1),
+      0 0.1rem 0.25rem -0.06rem rgba(0, 0, 0, 0.06);
   }
 
   &:active {
-    transform: scale(0.98);
+    transform: translateY(0);
   }
 
   &:focus {

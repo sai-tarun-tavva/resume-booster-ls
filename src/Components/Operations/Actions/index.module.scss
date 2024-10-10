@@ -6,6 +6,7 @@
     grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
     gap: 1rem;
   }
+
   .errorText {
     color: var(--error-color);
     font-size: 0.75rem;
