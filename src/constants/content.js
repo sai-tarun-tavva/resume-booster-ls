@@ -1,4 +1,4 @@
-import { OPERATION_KEYS } from "./constants";
+import { OPERATION_UI_KEYS } from "./constants";
 
 const {
   REVIEW,
@@ -9,7 +9,7 @@ const {
   QUESTIONS,
   EXPERIENCE,
   SKILLS,
-} = OPERATION_KEYS;
+} = OPERATION_UI_KEYS;
 
 export const CONTENT = {
   sparkHub: {
