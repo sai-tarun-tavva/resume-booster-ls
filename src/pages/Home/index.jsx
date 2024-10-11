@@ -1,4 +1,4 @@
-import SparkHub from "../../Components/SparkHub";
+import SparkHub from "../../components/SparkHub";
 
 /**
  * Home Component

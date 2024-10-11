@@ -7,18 +7,20 @@ const Header = () => {
   const headerTabs = Object.values(CONTENT.sparkHub.results);
 
   return (
-    <div className={classes.header}>
-      {headerTabs.map((item, index) => (
-        <div
-          key={index}
-          className={`${classes.headerTab} ${
-            index === activeTab ? classes.active : ""
-          }`}
-          onClick={() => setActiveTab(index)}
-        >
-          {item}
-        </div>
-      ))}
+    <div className={classes.headerContainer}>
+      <div className={classes.header}>
+        {headerTabs.map((item, index) => (
+          <div
+            key={index}
+            className={`${classes.headerTab} ${
+              index === activeTab ? classes.active : ""
+            }`}
+            onClick={() => setActiveTab(index)}
+          >
+            {item}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
