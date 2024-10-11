@@ -5,7 +5,7 @@ export const OPERATION_KEYS = {
   IMPROVE: "improveResume",
   KEYWORDS: "missingKeywords",
   QUESTIONS: "interviewQuestions",
-  EXP: "domainExperience",
+  EXPERIENCE: "domainExperience",
   SKILLS: "desiredSkills",
 };
 

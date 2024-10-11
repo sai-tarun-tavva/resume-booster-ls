@@ -30,7 +30,7 @@ const Operations = () => {
     upload: { error: uploadError },
     select: { error: selectError },
     actions: { error: actionsError },
-  } = CONTENT.sparkHub;
+  } = CONTENT.sparkHub.operations;
 
   const setSingleError = (error, type) => {
     setErrors((prev) => ({ ...prev, [type]: error }));

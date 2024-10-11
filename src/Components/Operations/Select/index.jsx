@@ -9,7 +9,7 @@ const Select = ({ error, setError }) => {
   const {
     options: { default: defaultValue, option1, option2 },
     error: errorMessage,
-  } = CONTENT.sparkHub.select;
+  } = CONTENT.sparkHub.operations.select;
 
   const handleSelectChange = (event) => {
     const value = event.target.value;

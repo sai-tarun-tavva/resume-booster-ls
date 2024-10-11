@@ -2,7 +2,8 @@ import { CONTENT } from "../../constants";
 import classes from "./index.module.scss";
 
 const OverlayMessage = () => {
-  const { title1, title2, subtitle } = CONTENT.sparkHub.overlayMessage;
+  const { title1, title2, subtitle } =
+    CONTENT.sparkHub.operations.overlayMessage;
   return (
     <div className={classes.overlay}>
       <div className={classes.content}>

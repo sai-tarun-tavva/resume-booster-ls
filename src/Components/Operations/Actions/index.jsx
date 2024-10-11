@@ -11,14 +11,14 @@ const Actions = ({ error, setError }) => {
     error: errorMessage,
     header,
     items: actionItems,
-  } = CONTENT.sparkHub.actions;
+  } = CONTENT.sparkHub.operations.actions;
 
-  const handleCheckboxChange = (name) => {
+  const handleCheckboxChange = (key) => {
     let updatedActions = [...selectedActions];
-    if (updatedActions.includes(name)) {
-      updatedActions = updatedActions.filter((action) => action !== name);
+    if (updatedActions.includes(key)) {
+      updatedActions = updatedActions.filter((action) => action !== key);
     } else {
-      updatedActions.push(name);
+      updatedActions.push(key);
     }
     dispatch(dataActions.updateSelectedActions(updatedActions));
     if (updatedActions.length > 0) {
@@ -32,8 +32,13 @@ const Actions = ({ error, setError }) => {
     <div className={classes.actionsContainer}>
       <h3 className={classes.title}>{header}</h3>
       <div className={classes.actions}>
-        {actionItems.map((item, index) => (
-          <Action key={index} name={item} onChange={handleCheckboxChange} />
+        {Object.entries(actionItems).map(([apiKey, name], index) => (
+          <Action
+            key={index}
+            apiKey={apiKey}
+            name={name}
+            onChange={handleCheckboxChange}
+          />
         ))}
       </div>
       <small className={classes.errorText}>{error || ""}</small>

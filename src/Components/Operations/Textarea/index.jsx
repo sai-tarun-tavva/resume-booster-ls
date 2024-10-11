@@ -8,7 +8,8 @@ const Textarea = ({ error, setError }) => {
   const dispatch = useDispatch();
   const { description } = useSelector((state) => state.data);
   const [isFocused, setIsFocused] = useState(false);
-  const { placeholder, error: errorMessage } = CONTENT.sparkHub.textarea;
+  const { placeholder, error: errorMessage } =
+    CONTENT.sparkHub.operations.textarea;
 
   const handleChange = (e) => {
     dispatch(dataActions.updateDescription(e.target.value));

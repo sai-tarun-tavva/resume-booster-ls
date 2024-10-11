@@ -2,7 +2,11 @@ import { CONTENT } from "../../../constants";
 import classes from "./index.module.scss";
 
 const Upload = ({ file, setFile, error, setError }) => {
-  const { drag, browse, error: errorMessage } = CONTENT.sparkHub.upload;
+  const {
+    drag,
+    browse,
+    error: errorMessage,
+  } = CONTENT.sparkHub.operations.upload;
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];

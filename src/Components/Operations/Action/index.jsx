@@ -1,9 +1,9 @@
 import React from "react";
 import classes from "./index.module.scss";
 
-const Action = ({ name, onChange }) => {
+const Action = ({ apiKey, name, onChange }) => {
   const handleChange = (event) => {
-    onChange(name, event.target.checked);
+    onChange(apiKey, event.target.checked);
   };
 
   return (

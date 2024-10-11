@@ -1,0 +1,110 @@
+// _resume_evaluation.scss
+
+$primary-color: #3498db;
+$secondary-color: #2c3e50;
+$background-color: #f8f9fa;
+$text-color: #333;
+$border-radius: 8px;
+$box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+.responseContainer {
+  font-family: "Inter", sans-serif;
+  color: $text-color;
+  line-height: 1.6;
+  max-width: 50rem;
+  margin: 6rem auto;
+  padding: 2rem;
+  background-color: $background-color;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+
+  .title {
+    font-size: 1.8rem;
+    color: $primary-color;
+    border-bottom: 2px solid $primary-color;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .subTitle {
+    font-weight: 600;
+    text-transform: uppercase;
+    color: $secondary-color;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  .bold {
+    font-weight: 600;
+    color: $secondary-color;
+  }
+
+  .list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .listItem {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+
+    &::before {
+      content: "•";
+      color: $primary-color;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+
+  .numberedListItem {
+    counter-increment: item;
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 2rem;
+
+    &::before {
+      content: counter(item) ".";
+      color: $primary-color;
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-weight: 600;
+    }
+  }
+
+  .inlineCode {
+    background-color: darken($background-color, 5%);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Courier New", Courier, monospace;
+  }
+
+  .blockCode {
+    background-color: darken($background-color, 5%);
+    padding: 1rem;
+    border-radius: $border-radius;
+    font-family: "Courier New", Courier, monospace;
+    white-space: pre-wrap;
+    margin-bottom: 1rem;
+  }
+}
+
+// Media query for responsiveness
+@media (max-width: 768px) {
+  .response-container {
+    padding: 1.5rem;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+    }
+  }
+}
