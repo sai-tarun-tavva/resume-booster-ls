@@ -108,3 +108,11 @@ body {
 ::-webkit-scrollbar-track:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
+::selection {
+  background-color: lightblue;
+}
+
+::-moz-selection {
+  background-color: lightblue;
+}

@@ -1,4 +1,4 @@
-import { formatContent } from "../../../utilities/utilities";
+import { formatContent } from "../../../utilities";
 import { sample } from "../../../constants/sample";
 import classes from "./index.module.scss";
 
