@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { CONTENT } from "../../../constants";
+import { CONTENT } from "../../../../constants";
 import classes from "./index.module.scss";
 
 const Header = ({ clickHandler }) => {

@@ -1,4 +1,4 @@
-import { CONTENT } from "../../../constants";
+import { CONTENT } from "../../../../constants";
 import classes from "./index.module.scss";
 
 const Upload = ({ file, setFile, error, setError }) => {

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import Action from "../Action";
-import { dataActions } from "../../../store";
-import { CONTENT } from "../../../constants";
+import { dataActions } from "../../../../store";
+import { CONTENT } from "../../../../constants";
 import classes from "./index.module.scss";
 
 const Actions = ({ error, setError }) => {

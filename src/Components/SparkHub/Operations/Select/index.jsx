@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { dataActions } from "../../../store";
-import { CONTENT } from "../../../constants";
+import { dataActions } from "../../../../store";
+import { CONTENT } from "../../../../constants";
 import classes from "./index.module.scss";
 
 const Select = ({ error, setError }) => {

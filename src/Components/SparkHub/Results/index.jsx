@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "../Loader";
+import Loader from "../../Loader";
 import Header from "./Header";
 import Response from "./Response";
-import { resultActions } from "../../store";
+import { resultActions } from "../../../store";
 import classes from "./index.module.scss";
 
 const Results = () => {

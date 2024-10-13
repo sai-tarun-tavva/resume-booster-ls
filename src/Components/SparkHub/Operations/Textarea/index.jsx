@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { dataActions } from "../../../store";
-import { CONTENT } from "../../../constants";
+import { dataActions } from "../../../../store";
+import { CONTENT } from "../../../../constants";
 import classes from "./index.module.scss";
 
 const Textarea = ({ error, setError }) => {

@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { formatContent } from "../../../utilities";
+import { formatContent } from "../../../../utilities";
 import classes from "./index.module.scss";
 
 const Response = () => {

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import Loader from "../Loader";
-import { CONTENT } from "../../constants";
+import Loader from "../../Loader";
+import { CONTENT } from "../../../constants";
 import classes from "./index.module.scss";
 
 const OverlayMessage = () => {

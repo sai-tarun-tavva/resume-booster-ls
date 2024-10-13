@@ -22,12 +22,26 @@ export const formatContent = (data, classes) => {
       });
     };
 
-    // Handle section headers (##)
-    if (trimmedItem.startsWith("#")) {
+    // Handle hashtags
+    if (/^(#[a-zA-Z0-9_]+\s*)+$/.test(trimmedItem)) {
+      const hashtags = trimmedItem.split(/\s+/);
       return (
-        <h1 key={index} className={classes.mainTitle}>
-          {trimmedItem.replace(/^#\s*/, "")}
-        </h1>
+        <div key={index} className={classes.hashtagContainer}>
+          {hashtags.map((tag, tagIndex) => (
+            <span key={tagIndex} className={classes.hashtag}>
+              {tag}
+            </span>
+          ))}
+        </div>
+      );
+    }
+
+    // Handle section headers (##)
+    if (trimmedItem.startsWith("###")) {
+      return (
+        <h3 key={index} className={classes.subTitle}>
+          {trimmedItem.replace(/^###\s*/, "")}
+        </h3>
       );
     } else if (trimmedItem.startsWith("##")) {
       return (
@@ -35,11 +49,11 @@ export const formatContent = (data, classes) => {
           {trimmedItem.replace(/^##\s*/, "")}
         </h2>
       );
-    } else if (trimmedItem.startsWith("###")) {
+    } else if (trimmedItem.startsWith("#")) {
       return (
-        <h3 key={index} className={classes.subTitle}>
-          {trimmedItem.replace(/^###\s*/, "")}
-        </h3>
+        <h1 key={index} className={classes.mainTitle}>
+          {trimmedItem.replace(/^#\s*/, "")}
+        </h1>
       );
     }
 
@@ -108,20 +122,6 @@ export const formatContent = (data, classes) => {
         <pre key={index} className={classes.blockCode}>
           {trimmedItem.replace(/```/g, "").trim()}
         </pre>
-      );
-    }
-
-    // Handle hashtags
-    if (/^(#[a-zA-Z0-9_]+\s*)+$/.test(trimmedItem)) {
-      const hashtags = trimmedItem.split(/\s+/);
-      return (
-        <div key={index} className={classes.hashtagContainer}>
-          {hashtags.map((tag, tagIndex) => (
-            <span key={tagIndex} className={classes.hashtag}>
-              {tag}
-            </span>
-          ))}
-        </div>
       );
     }
 

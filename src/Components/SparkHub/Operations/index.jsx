@@ -6,14 +6,14 @@ import Upload from "./Upload";
 import Select from "./Select";
 import Actions from "./Actions";
 import Button from "./Button";
-import { loadingActions, resultActions } from "../../store";
-import { makeSuggestions } from "../../utilities";
+import { loadingActions, resultActions } from "../../../store";
+import { makeSuggestions } from "../../../utilities";
 import {
   CONTENT,
   INPUT_ACTION_TYPES,
   OPERATION_API_UI_KEYS,
   STATUS_CODES,
-} from "../../constants";
+} from "../../../constants";
 import classes from "./index.module.scss";
 
 const { TEXTAREA, UPLOAD, SELECT, CHECKBOX } = INPUT_ACTION_TYPES;

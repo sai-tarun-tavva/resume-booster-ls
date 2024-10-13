@@ -12,6 +12,4 @@ const Home = () => {
   return <SparkHub />;
 };
 
-Home.displayName = "Home";
-
 export default Home;
