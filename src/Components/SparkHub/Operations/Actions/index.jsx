@@ -1,9 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
+import PropTypes from "prop-types";
 import Action from "../Action";
 import { dataActions } from "../../../../store";
 import { CONTENT } from "../../../../constants";
 import classes from "./index.module.scss";
 
+/**
+ * Actions Component
+ *
+ * Displays a list of actions that can be selected by the user.
+ *
+ * @param {Object} props - The component props.
+ * @param {string} props.error - Error message related to actions.
+ * @param {function} props.setError - Function to set the error message.
+ * @returns {JSX.Element} The actions component.
+ */
 const Actions = ({ error, setError }) => {
   const dispatch = useDispatch();
   const { selectedActions } = useSelector((state) => state.data);
@@ -44,6 +55,11 @@ const Actions = ({ error, setError }) => {
       <small className={classes.errorText}>{error || ""}</small>
     </section>
   );
+};
+
+Actions.propTypes = {
+  error: PropTypes.string,
+  setError: PropTypes.func.isRequired,
 };
 
 export default Actions;

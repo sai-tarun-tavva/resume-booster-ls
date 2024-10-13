@@ -25,6 +25,13 @@ const initialState = {
   [CHECKBOX]: "",
 };
 
+/**
+ * Operations Component
+ *
+ * Handles user input for various operations, including text input, file upload, and action selection.
+ *
+ * @returns {JSX.Element} The operations component.
+ */
 const Operations = () => {
   const dispatch = useDispatch();
   const { description, selectedAI, selectedActions } = useSelector(
@@ -75,16 +82,16 @@ const Operations = () => {
 
       dispatch(loadingActions.enableLoading());
 
-      const response = await makeSuggestions();
-      const { status, data } = response;
+      const { status, data } = await makeSuggestions();
 
       dispatch(loadingActions.disableLoading());
 
       if (status === STATUS_CODES.SUCCESS) {
-        dispatch(resultActions.updateState(data.analysisResults));
+        const { analysisResults } = data;
+        dispatch(resultActions.updateState(analysisResults));
         dispatch(
           resultActions.updateSelectedKey(
-            OPERATION_API_UI_KEYS[Object.keys(data.analysisResults)[0]]
+            OPERATION_API_UI_KEYS[Object.keys(analysisResults)[0]]
           )
         );
       }

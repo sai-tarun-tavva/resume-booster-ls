@@ -86,13 +86,13 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 4px;
-  height: 2px;
+  width: 0.25rem;
+  height: 0.1rem;
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: rgba(100, 100, 100, 0.3);
-  border-radius: 10px;
+  border-radius: 0.6rem;
   transition: background-color 0.3s ease;
 }
 
@@ -102,7 +102,7 @@ body {
 
 ::-webkit-scrollbar-track {
   background-color: rgba(0, 0, 0, 0.05);
-  border-radius: 10px;
+  border-radius: 0.6rem;
 }
 
 ::-webkit-scrollbar-track:hover {

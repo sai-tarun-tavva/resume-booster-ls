@@ -5,6 +5,13 @@ import Response from "./Response";
 import { resultActions } from "../../../store";
 import classes from "./index.module.scss";
 
+/**
+ * Results Component
+ *
+ * Displays the results of operations and handles loading state.
+ *
+ * @returns {JSX.Element} The results component.
+ */
 const Results = () => {
   const dispatch = useDispatch();
   const { isLoading } = useSelector((state) => state.loading);

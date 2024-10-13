@@ -1,9 +1,20 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import PropTypes from "prop-types";
 import { dataActions } from "../../../../store";
 import { CONTENT } from "../../../../constants";
 import classes from "./index.module.scss";
 
+/**
+ * Textarea Component
+ *
+ * Provides a controlled textarea for user input with validation.
+ *
+ * @param {Object} props - The component props.
+ * @param {string} props.error - Error message related to textarea.
+ * @param {function} props.setError - Function to set the error message.
+ * @returns {JSX.Element} The textarea component.
+ */
 const Textarea = ({ error, setError }) => {
   const dispatch = useDispatch();
   const { description } = useSelector((state) => state.data);
@@ -49,6 +60,11 @@ const Textarea = ({ error, setError }) => {
       <small className={classes.errorText}>{error || ""}</small>
     </div>
   );
+};
+
+Textarea.propTypes = {
+  error: PropTypes.string,
+  setError: PropTypes.func.isRequired,
 };
 
 export default Textarea;

@@ -1,5 +1,12 @@
 import classes from "./index.module.scss";
 
+/**
+ * Header Component
+ *
+ * Renders the application header with a logo and logout button.
+ *
+ * @returns {JSX.Element} The rendered header component.
+ */
 const Header = () => {
   return (
     <header className={classes.header}>

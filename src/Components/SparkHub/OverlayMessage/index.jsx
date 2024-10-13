@@ -3,6 +3,13 @@ import Loader from "../../Loader";
 import { CONTENT } from "../../../constants";
 import classes from "./index.module.scss";
 
+/**
+ * OverlayMessage Component
+ *
+ * Displays a message overlay when there are no results.
+ *
+ * @returns {JSX.Element} The overlay message component.
+ */
 const OverlayMessage = () => {
   const { isLoading } = useSelector((state) => state.loading);
   const { title1, title2, subTitle } =

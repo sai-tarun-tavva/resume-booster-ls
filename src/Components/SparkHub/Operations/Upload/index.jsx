@@ -1,6 +1,19 @@
+import PropTypes from "prop-types";
 import { CONTENT } from "../../../../constants";
 import classes from "./index.module.scss";
 
+/**
+ * Upload Component
+ *
+ * Handles file uploads with drag-and-drop functionality.
+ *
+ * @param {Object} props - The component props.
+ * @param {File} props.file - The selected file.
+ * @param {function} props.setFile - Function to set the file.
+ * @param {string} props.error - Error message related to file upload.
+ * @param {function} props.setError - Function to set the error message.
+ * @returns {JSX.Element} The upload component.
+ */
 const Upload = ({ file, setFile, error, setError }) => {
   const {
     drag,
@@ -65,6 +78,13 @@ const Upload = ({ file, setFile, error, setError }) => {
       <small className={classes.errorText}>{error || ""}</small>
     </div>
   );
+};
+
+Upload.propTypes = {
+  file: PropTypes.instanceOf(File),
+  setFile: PropTypes.func.isRequired,
+  error: PropTypes.string,
+  setError: PropTypes.func.isRequired,
 };
 
 export default Upload;
