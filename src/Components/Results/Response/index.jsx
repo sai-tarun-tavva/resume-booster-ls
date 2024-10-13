@@ -1,11 +1,13 @@
+import { useSelector } from "react-redux";
 import { formatContent } from "../../../utilities";
-import { sample } from "../../../constants/sample";
 import classes from "./index.module.scss";
 
 const Response = () => {
+  const { selectedKey, ...result } = useSelector((state) => state.result);
+
   return (
     <div className={classes.responseContainer}>
-      {formatContent(sample[8], classes)}
+      {formatContent(result[selectedKey], classes)}
     </div>
   );
 };

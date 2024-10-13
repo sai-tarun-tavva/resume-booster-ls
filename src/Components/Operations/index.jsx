@@ -1,12 +1,19 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Header from "./Header";
 import Textarea from "./Textarea";
 import Upload from "./Upload";
 import Select from "./Select";
 import Actions from "./Actions";
 import Button from "./Button";
-import { CONTENT, INPUT_ACTION_TYPES } from "../../constants";
+import { loadingActions, resultActions } from "../../store";
+import { makeSuggestions } from "../../utilities";
+import {
+  CONTENT,
+  INPUT_ACTION_TYPES,
+  OPERATION_API_UI_KEYS,
+  STATUS_CODES,
+} from "../../constants";
 import classes from "./index.module.scss";
 
 const { TEXTAREA, UPLOAD, SELECT, CHECKBOX } = INPUT_ACTION_TYPES;
@@ -19,6 +26,7 @@ const initialState = {
 };
 
 const Operations = () => {
+  const dispatch = useDispatch();
   const { description, selectedAI, selectedActions } = useSelector(
     (state) => state.data
   );
@@ -46,15 +54,39 @@ const Operations = () => {
     return validationErrors;
   };
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
     const validationErrors = validateForm();
     if (Object.values(validationErrors).some((error) => error)) {
       setErrors(validationErrors);
     } else {
       setErrors(initialState);
-      console.log(description, file, selectedAI, selectedActions);
-      // Dispatch action or call API here
+
+      const formData = new FormData();
+      formData.append("description", description);
+      formData.append("file", file);
+
+      selectedActions.forEach((action) => {
+        formData.append("selectedActions[]", action);
+      });
+
+      formData.append("selectedAI", selectedAI);
+
+      dispatch(loadingActions.enableLoading());
+
+      const response = await makeSuggestions();
+      const { status, data } = response;
+
+      dispatch(loadingActions.disableLoading());
+
+      if (status === STATUS_CODES.SUCCESS) {
+        dispatch(resultActions.updateState(data.analysisResults));
+        dispatch(
+          resultActions.updateSelectedKey(
+            OPERATION_API_UI_KEYS[Object.keys(data.analysisResults)[0]]
+          )
+        );
+      }
     }
   };
 

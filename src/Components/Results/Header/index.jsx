@@ -1,23 +1,23 @@
+import { useSelector } from "react-redux";
 import { CONTENT } from "../../../constants";
 import classes from "./index.module.scss";
-import { useState } from "react";
 
-const Header = () => {
-  const [activeTab, setActiveTab] = useState(0);
-  const headerTabs = Object.values(CONTENT.sparkHub.results);
+const Header = ({ clickHandler }) => {
+  const { selectedKey } = useSelector((state) => state.result);
+  const headerTabs = Object.entries(CONTENT.sparkHub.results);
 
   return (
     <div className={classes.headerContainer}>
       <div className={classes.header}>
-        {headerTabs.map((item, index) => (
+        {headerTabs.map(([key, value]) => (
           <div
-            key={index}
+            key={key}
             className={`${classes.headerTab} ${
-              index === activeTab ? classes.active : ""
+              key === selectedKey ? classes.active : ""
             }`}
-            onClick={() => setActiveTab(index)}
+            onClick={() => clickHandler(key)}
           >
-            {item}
+            {value}
           </div>
         ))}
       </div>

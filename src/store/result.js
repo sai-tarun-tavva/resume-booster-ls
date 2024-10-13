@@ -16,6 +16,7 @@ const {
 } = OPERATION_UI_KEYS;
 
 const initialState = {
+  selectedKey: null,
   [REVIEW]: null,
   [ABOUT]: null,
   [PERCENTAGE]: null,
@@ -37,6 +38,9 @@ const resultSlice = createSlice({
           state[operationKey] = value;
         }
       });
+    },
+    updateSelectedKey(state, { payload }) {
+      state.selectedKey = payload;
     },
   },
 });
