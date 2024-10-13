@@ -23,11 +23,23 @@ export const formatContent = (data, classes) => {
     };
 
     // Handle section headers (##)
-    if (trimmedItem.startsWith("##")) {
+    if (trimmedItem.startsWith("#")) {
+      return (
+        <h1 key={index} className={classes.mainTitle}>
+          {trimmedItem.replace(/^#\s*/, "")}
+        </h1>
+      );
+    } else if (trimmedItem.startsWith("##")) {
       return (
         <h2 key={index} className={classes.title}>
           {trimmedItem.replace(/^##\s*/, "")}
         </h2>
+      );
+    } else if (trimmedItem.startsWith("###")) {
+      return (
+        <h3 key={index} className={classes.subTitle}>
+          {trimmedItem.replace(/^###\s*/, "")}
+        </h3>
       );
     }
 
@@ -110,6 +122,96 @@ export const formatContent = (data, classes) => {
             </span>
           ))}
         </div>
+      );
+    }
+
+    // Handle blockquotes (>)
+    if (trimmedItem.startsWith(">")) {
+      return (
+        <blockquote key={index} className={classes.blockquote}>
+          {italicizeQuotes(trimmedItem.replace(/^>\s*/, ""))}
+        </blockquote>
+      );
+    }
+
+    // Handle horizontal rules (---)
+    if (/^---$/.test(trimmedItem)) {
+      return <hr key={index} className={classes.horizontalRule} />;
+    }
+
+    // Handle links ([title](url))
+    if (/\[.*?\]\(.*?\)/.test(trimmedItem)) {
+      const linkText = trimmedItem.match(/\[(.*?)\]/)[1];
+      const linkUrl = trimmedItem.match(/\((.*?)\)/)[1];
+      return (
+        <a key={index} href={linkUrl} className={classes.link}>
+          {linkText}
+        </a>
+      );
+    }
+
+    // Handle images (![alt](src))
+    if (/!\[.*?\]\(.*?\)/.test(trimmedItem)) {
+      const altText = trimmedItem.match(/!\[(.*?)\]/)[1];
+      const imgUrl = trimmedItem.match(/\((.*?)\)/)[1];
+      return (
+        <img key={index} src={imgUrl} alt={altText} className={classes.image} />
+      );
+    }
+
+    // Handle tables (| Syntax | Description |)
+    if (/^\|.*\|.*\|/.test(trimmedItem)) {
+      const rows = trimmedItem.split("\n");
+      return (
+        <table key={index} className={classes.table}>
+          <thead>
+            <tr>
+              {rows[0]
+                .split("|")
+                .filter((cell) => cell.trim())
+                .map((header, headerIndex) => (
+                  <th key={headerIndex} className={classes.tableHeader}>
+                    {header.trim()}
+                  </th>
+                ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.slice(1).map((row, rowIndex) => (
+              <tr key={rowIndex}>
+                {row
+                  .split("|")
+                  .filter((cell) => cell.trim())
+                  .map((cell, cellIndex) => (
+                    <td key={cellIndex} className={classes.tableCell}>
+                      {cell.trim()}
+                    </td>
+                  ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      );
+    }
+
+    // Handle footnotes ([^1])
+    if (/\[\^(\d+)\]/.test(trimmedItem)) {
+      const footnoteNumber = trimmedItem.match(/\[\^(\d+)\]/)[1];
+      return (
+        <sup key={index} className={classes.footnote}>
+          {footnoteNumber}
+        </sup>
+      );
+    }
+
+    // Handle definition lists (term : definition)
+    if (/.+:\s.+/.test(trimmedItem)) {
+      const [term, definition] = trimmedItem.split(/\s*:\s*/);
+      return (
+        <dl key={index} className={classes.definitionList}>
+          <dt className={classes.term}>{term}</dt>
+          <dd className={classes.definition}>{definition}</dd>
+        </dl>
       );
     }
 
