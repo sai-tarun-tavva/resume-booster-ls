@@ -16,8 +16,10 @@
     justify-content: start;
     height: 86vh;
   }
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
+  .operations {
     flex: none;
     width: 100%;
     border-right: none;

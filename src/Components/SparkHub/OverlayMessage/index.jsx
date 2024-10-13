@@ -5,7 +5,7 @@ import classes from "./index.module.scss";
 
 const OverlayMessage = () => {
   const { isLoading } = useSelector((state) => state.loading);
-  const { title1, title2, subtitle } =
+  const { title1, title2, subTitle } =
     CONTENT.sparkHub.operations.overlayMessage;
 
   return (
@@ -21,7 +21,7 @@ const OverlayMessage = () => {
               {title1}
               <span className={classes.highlight}>{title2}</span>
             </h1>
-            <p className={classes.subtitle}>{subtitle}</p>
+            <p className={classes.subTitle}>{subTitle}</p>
             <div className={classes.rocket}>
               <i className="bi bi-rocket-takeoff"></i>
             </div>

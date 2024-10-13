@@ -5,6 +5,14 @@
 
   .input {
     display: none;
+
+    &:checked + .slider {
+      background-color: var(--primary-color);
+    }
+
+    &:checked + .slider:before {
+      transform: translateX(1.25rem);
+    }
   }
 
   .slider {
@@ -30,21 +38,15 @@
     }
   }
 
-  .input:checked + .slider {
-    background-color: var(--primary-color);
-  }
-
-  .input:checked + .slider:before {
-    transform: translateX(1.25rem);
-  }
-
   .name {
     font-size: 0.875rem;
     color: var(--text-color);
     transition: var(--transition);
   }
 
-  &:hover .name {
-    color: var(--primary-color);
+  &:hover {
+    .name {
+      color: var(--primary-color);
+    }
   }
 }

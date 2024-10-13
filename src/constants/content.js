@@ -54,7 +54,7 @@ export const CONTENT = {
       overlayMessage: {
         title1: "Elevate Your ",
         title2: "Career",
-        subtitle: "AI-powered resume analysis awaits",
+        subTitle: "AI-powered resume analysis awaits",
       },
     },
     results: {
