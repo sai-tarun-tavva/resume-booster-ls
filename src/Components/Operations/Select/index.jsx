@@ -21,6 +21,10 @@ const Select = ({ error, setError }) => {
     }
   };
 
+  const handleBlur = (event) => {
+    if (!event.target.value) setError(errorMessage);
+  };
+
   return (
     <div className={classes.select}>
       <div className={classes.selectWrapper}>
@@ -28,6 +32,7 @@ const Select = ({ error, setError }) => {
           className={`${classes.input} ${error ? classes.error : ""}`}
           value={selectedAI}
           onChange={handleSelectChange}
+          onBlur={handleBlur}
         >
           <option value="" disabled>
             {defaultValue}

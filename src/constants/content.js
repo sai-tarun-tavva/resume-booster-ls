@@ -27,11 +27,11 @@ export const CONTENT = {
       },
       select: {
         options: {
-          default: "Select an AI",
+          default: "Choose a service",
           option1: "GeminiAI",
           option2: "OpenAI",
         },
-        error: "Please select an AI.",
+        error: "Please choose a service.",
       },
       actions: {
         header: "Select Actions",
