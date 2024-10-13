@@ -30,6 +30,7 @@ const Operations = () => {
   const { description, selectedAI, selectedActions } = useSelector(
     (state) => state.data
   );
+  const { isLoading } = useSelector((state) => state.loading);
   const [file, setFile] = useState(null);
   const [errors, setErrors] = useState(initialState);
   const {
@@ -112,8 +113,9 @@ const Operations = () => {
           error={errors[CHECKBOX]}
           setError={(error) => setSingleError(error, CHECKBOX)}
         />
-        <Button>
-          {button.default} <i className="bi bi-rocket-takeoff"></i>
+        <Button className={isLoading ? "loading" : ""}>
+          {isLoading ? button.loading : button.default}{" "}
+          <i className="bi bi-rocket-takeoff"></i>
         </Button>
       </form>
     </div>
