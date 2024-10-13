@@ -1,0 +1,59 @@
+.select {
+  position: relative;
+  margin-bottom: 1.5rem;
+
+  .selectWrapper {
+    position: relative;
+
+    &::after {
+      content: "▼";
+      font-size: 0.875rem;
+      top: 50%;
+      right: 1rem;
+      position: absolute;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: var(--text-light);
+    }
+
+    .input {
+      appearance: none;
+      width: 100%;
+      font-size: 0.875rem;
+      padding: 0.75rem 1rem;
+      background-color: var(--bg-color);
+      border: 0.1rem solid var(--border-color);
+      border-radius: 0.5rem;
+      cursor: pointer;
+      outline: none;
+      transition: var(--transition);
+
+      &:hover {
+        border-color: var(--text-light);
+      }
+
+      &:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.2rem var(--primary-shadow);
+        background-color: var(--card-bg);
+      }
+
+      &.error {
+        border-color: var(--error-color);
+        box-shadow: 0 0 0 0.2rem var(--error-shadow);
+      }
+
+      option {
+        padding: 0.75rem;
+      }
+    }
+  }
+
+  .errorText {
+    color: var(--error-color);
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    height: 1rem;
+    display: block;
+  }
+}

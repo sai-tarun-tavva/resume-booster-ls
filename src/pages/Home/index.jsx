@@ -1,4 +1,4 @@
-import SparkHub from "../../Components/SparkHub";
+import SparkHub from "../../components/SparkHub";
 
 /**
  * Home Component
@@ -9,9 +9,11 @@ import SparkHub from "../../Components/SparkHub";
  * @returns {JSX.Element} The rendered Home component.
  */
 const Home = () => {
-  return <SparkHub />;
+  return (
+    <main>
+      <SparkHub />
+    </main>
+  );
 };
-
-Home.displayName = "Home";
 
 export default Home;
