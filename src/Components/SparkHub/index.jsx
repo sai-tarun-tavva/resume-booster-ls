@@ -8,10 +8,10 @@ const SparkHub = () => {
   const { selectedKey } = useSelector((state) => state.result);
 
   return (
-    <div className={classes.sparkHub}>
+    <section className={classes.sparkHub}>
       <Operations />
       {selectedKey ? <Results /> : <OverlayMessage />}
-    </div>
+    </section>
   );
 };
 

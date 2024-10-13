@@ -33,6 +33,7 @@ const Select = ({ error, setError }) => {
           value={selectedAI}
           onChange={handleSelectChange}
           onBlur={handleBlur}
+          aria-label={defaultValue}
         >
           <option value="" disabled>
             {defaultValue}

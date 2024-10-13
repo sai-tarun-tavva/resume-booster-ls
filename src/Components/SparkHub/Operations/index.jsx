@@ -92,7 +92,7 @@ const Operations = () => {
   };
 
   return (
-    <div className={classes.operations}>
+    <section className={classes.operations}>
       <Header />
       <form onSubmit={handleFormSubmit}>
         <Textarea
@@ -118,7 +118,7 @@ const Operations = () => {
           <i className="bi bi-rocket-takeoff"></i>
         </Button>
       </form>
-    </div>
+    </section>
   );
 };
 

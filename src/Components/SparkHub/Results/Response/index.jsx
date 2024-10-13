@@ -6,9 +6,9 @@ const Response = () => {
   const { selectedKey, ...result } = useSelector((state) => state.result);
 
   return (
-    <div className={classes.responseContainer}>
+    <section className={classes.responseContainer}>
       {formatContent(result[selectedKey], classes)}
-    </div>
+    </section>
   );
 };
 

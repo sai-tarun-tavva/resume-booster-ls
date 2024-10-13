@@ -44,6 +44,7 @@ const Textarea = ({ error, setError }) => {
         onChange={handleChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
+        aria-required="true"
       />
       <small className={classes.errorText}>{error || ""}</small>
     </div>

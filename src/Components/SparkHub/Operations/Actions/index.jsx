@@ -29,7 +29,7 @@ const Actions = ({ error, setError }) => {
   };
 
   return (
-    <div className={classes.actionsContainer}>
+    <section className={classes.actionsContainer}>
       <h3 className={classes.title}>{header}</h3>
       <div className={classes.actions}>
         {Object.entries(actionItems).map(([apiKey, name], index) => (
@@ -42,7 +42,7 @@ const Actions = ({ error, setError }) => {
         ))}
       </div>
       <small className={classes.errorText}>{error || ""}</small>
-    </div>
+    </section>
   );
 };
 

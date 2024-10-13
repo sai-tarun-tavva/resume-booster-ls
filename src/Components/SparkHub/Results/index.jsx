@@ -20,10 +20,10 @@ const Results = () => {
           <Loader />
         </div>
       ) : (
-        <div className={classes.results}>
+        <article className={classes.results}>
           <Header clickHandler={handleSelectResults} />
           <Response />
-        </div>
+        </article>
       )}
     </>
   );

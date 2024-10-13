@@ -9,7 +9,11 @@ import SparkHub from "../../components/SparkHub";
  * @returns {JSX.Element} The rendered Home component.
  */
 const Home = () => {
-  return <SparkHub />;
+  return (
+    <main>
+      <SparkHub />
+    </main>
+  );
 };
 
 export default Home;

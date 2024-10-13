@@ -30,6 +30,7 @@
       text-transform: uppercase;
       transition: color 0.3s ease, background 0.3s ease;
       border: 0.06rem solid var(--border-color);
+      background: var(--card-bg);
 
       &:hover {
         color: var(--primary-color);

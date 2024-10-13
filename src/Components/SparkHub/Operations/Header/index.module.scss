@@ -32,6 +32,8 @@
     font-size: 1.25rem;
     transition: var(--transition);
     cursor: pointer;
+    background: transparent;
+    border: none;
 
     &:hover {
       color: var(--primary-color);

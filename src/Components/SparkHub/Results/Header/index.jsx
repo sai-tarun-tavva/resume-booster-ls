@@ -7,10 +7,10 @@ const Header = ({ clickHandler }) => {
   const headerTabs = Object.entries(CONTENT.sparkHub.results);
 
   return (
-    <div className={classes.headerContainer}>
-      <div className={classes.header}>
+    <header className={classes.headerContainer}>
+      <nav className={classes.header}>
         {headerTabs.map(([key, value]) => (
-          <div
+          <button
             key={key}
             className={`${classes.headerTab} ${
               key === selectedKey ? classes.active : ""
@@ -18,10 +18,10 @@ const Header = ({ clickHandler }) => {
             onClick={() => clickHandler(key)}
           >
             {value}
-          </div>
+          </button>
         ))}
-      </div>
-    </div>
+      </nav>
+    </header>
   );
 };
 
