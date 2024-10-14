@@ -210,6 +210,8 @@ $tag-hover-color: #2c5777;
 @media (max-width: 768px) {
   .responseContainer {
     padding: 1.5rem;
+    max-width: unset;
+    width: 90%;
 
     .mainTitle {
       font-size: 1.8rem;

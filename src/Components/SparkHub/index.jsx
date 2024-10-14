@@ -13,9 +13,11 @@ import classes from "./index.module.scss";
  */
 const SparkHub = () => {
   const { selectedKey } = useSelector((state) => state.result);
+  const sectionHeight =
+    !selectedKey && window.innerWidth < 768 ? "100vh" : "auto";
 
   return (
-    <section className={classes.sparkHub}>
+    <section className={classes.sparkHub} style={{ height: sectionHeight }}>
       <Operations />
       {selectedKey ? <Results /> : <OverlayMessage />}
     </section>

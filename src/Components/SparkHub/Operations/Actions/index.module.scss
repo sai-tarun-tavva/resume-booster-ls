@@ -23,3 +23,10 @@
     grid-column: span 2;
   }
 }
+
+@media (max-width: 768px) {
+  .actionsContainer {
+    margin: unset;
+    margin-bottom: 1.5rem;
+  }
+}

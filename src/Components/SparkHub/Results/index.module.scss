@@ -12,3 +12,17 @@
   overflow: auto;
   margin-left: 30%;
 }
+
+@media (max-width: 768px) {
+  .loaderContainer {
+    margin-left: unset;
+    height: unset;
+    width: unset;
+    position: unset;
+  }
+
+  .results {
+    flex: none;
+    margin-left: unset;
+  }
+}

@@ -22,7 +22,13 @@
   .operations {
     flex: none;
     width: 100%;
+    height: auto;
+    position: static;
     border-right: none;
     border-bottom: 0.06rem solid var(--border-color);
+
+    form {
+      height: auto;
+    }
   }
 }

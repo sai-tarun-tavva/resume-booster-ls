@@ -107,7 +107,20 @@
 }
 
 @media (max-width: 768px) {
+  .loaderContainer {
+    margin-left: unset;
+    height: unset;
+    width: unset;
+    position: unset;
+  }
+
   .overlay {
+    flex: 1;
+    padding: 5rem;
+    height: unset;
+    min-height: 10rem;
+    margin-left: unset;
+
     .title {
       font-size: 3rem;
     }

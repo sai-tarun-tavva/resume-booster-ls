@@ -2,9 +2,9 @@
   display: flex;
   background-color: var(--bg-color);
   overflow: hidden;
+  height: auto;
 
   @media (max-width: 768px) {
     flex-direction: column;
-    height: auto;
   }
 }
