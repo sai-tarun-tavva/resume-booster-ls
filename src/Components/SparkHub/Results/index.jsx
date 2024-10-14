@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "../../Loader";
+import Loader from "../../../atoms/Loader";
 import Header from "./Header";
 import Response from "./Response";
 import { resultActions } from "../../../store";

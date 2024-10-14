@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import Loader from "../../Loader";
+import Loader from "../../../atoms/Loader";
 import { CONTENT } from "../../../constants";
 import classes from "./index.module.scss";
 
