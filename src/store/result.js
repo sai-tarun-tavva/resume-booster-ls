@@ -43,6 +43,10 @@ const resultSlice = createSlice({
         }
       });
     },
+    // Resets state with initial values including selectedKey
+    resetState() {
+      return { ...initialState };
+    },
     // Updates the selected key in the state
     updateSelectedKey(state, { payload }) {
       state.selectedKey = payload;

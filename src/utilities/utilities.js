@@ -1,3 +1,15 @@
+/**
+ * Resets the status asynchronously.
+ * @param {function} action - The action to dispatch.
+ * @returns {Promise<void>} A promise that resolves after the status is reset.
+ */
+export const resetStatusAsync = (action) => (dispatch) => {
+  return new Promise((resolve) => {
+    dispatch(action());
+    resolve(); // Resolve after resetting status
+  });
+};
+
 // Splits array items by new lines and trims whitespace
 const splitArrayItems = (arr) => {
   return arr.flatMap((item) =>

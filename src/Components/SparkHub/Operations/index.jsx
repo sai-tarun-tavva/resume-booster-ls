@@ -6,8 +6,8 @@ import Upload from "./Upload";
 import Select from "./Select";
 import Actions from "./Actions";
 import Button from "./Button";
-import { loadingActions, resultActions } from "../../../store";
-import { makeSuggestions } from "../../../utilities";
+import { loadingActions, resultActions, statusActions } from "../../../store";
+import { makeSuggestions, resetStatusAsync } from "../../../utilities";
 import {
   CONTENT,
   INPUT_ACTION_TYPES,
@@ -64,7 +64,10 @@ const Operations = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    await dispatch(resetStatusAsync(statusActions.resetStatus));
+
     const validationErrors = validateForm();
+
     if (Object.values(validationErrors).some((error) => error)) {
       setErrors(validationErrors);
     } else {
@@ -94,6 +97,15 @@ const Operations = () => {
             OPERATION_API_UI_KEYS[Object.keys(analysisResults)[0]]
           )
         );
+      } else {
+        dispatch(
+          statusActions.updateStatus({
+            message: CONTENT.serverError,
+            type: "failure",
+            darkMode: true,
+          })
+        );
+        dispatch(resultActions.resetState());
       }
     }
   };

@@ -12,6 +12,7 @@ const {
 } = OPERATION_UI_KEYS;
 
 export const CONTENT = {
+  serverError: "Server error, please try again later.",
   sparkHub: {
     operations: {
       logoSuffix: "R",

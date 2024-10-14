@@ -1,4 +1,4 @@
-import { END_POINTS, STATUS_CODES } from "../constants";
+import { END_POINTS } from "../constants";
 
 /**
  * Makes a GET request to retrieve suggestions.
@@ -17,7 +17,7 @@ export const makeSuggestions = async (body = null) => {
 
     if (!response.ok) {
       // Assume any error that causes this block to execute is a server issue
-      return { status: response.status, data: null };
+      return { status: 500, data: null };
     } else {
       // Return the response data and status
       const resData = await response.json();
@@ -26,6 +26,6 @@ export const makeSuggestions = async (body = null) => {
   } catch (error) {
     // Assume any error that causes this block to execute is a server or network issue
     console.error("Error fetching suggestions:", error);
-    return { status: STATUS_CODES.SUCCESS, data: null };
+    return { status: 500, data: null };
   }
 };
